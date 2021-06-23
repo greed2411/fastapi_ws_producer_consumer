@@ -77,7 +77,6 @@ async def consumer_endpoint(websocket: WebSocket):
     try:
 
         while True:
-
             payload_to_be_consumed = await queue.get() # blocking if empty tho.
             await websocket.send_json(payload_to_be_consumed)
             queue.task_done()
